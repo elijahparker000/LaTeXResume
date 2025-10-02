@@ -1,0 +1,343 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Elijah Parker's CV},
+    pdfauthor={Elijah Parker},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Elijah Parker - Page \thepage{} of \pageref*{LastPage}}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+    \begin{itemize}[topsep=0.10 cm,parsep=0.10 cm,partopsep=0pt,itemsep=0pt,leftmargin=0.4 cm + 10pt]
+}{
+    \end{itemize}
+}
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0.2 cm}{0.2 cm}
+}{
+    \end{adjustwidth}
+}
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+}
+
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated October 2025}\hspace{\widthof{Last updated October 2025}}
+    }}}%
+  }%
+}
+
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{#2 \raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Elijah Parker}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Laurel, MD}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:elijahparker000@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}elijahparker000@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+1-256-996-5241}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}(256) 996-5241}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://elijahparker000.com/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}elijahparker000.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/elijahparker000}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}elijahparker000}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/elijahparker000}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}elijahparker000}}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+    \section{Projects}
+        \begin{twocolentry}{\textit{July 2023 – May 2024}}
+            \textbf{Distributed Agricultural Monitoring Network (DNAM)}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Auburn University's first international collaboration for a senior design project
+                \item Worked with electrical engineering students from THWS in Geramny to design a LoRaWAN based agricultural monitoring system
+                \item Managed project budgets, Bill of Materials, travel, weekly meetings, status reports, Gantt charts, and presentations
+                \item Developed Arduino code, installed gateway on campus, deployed Django website, demonstrated successful project to faculty and students
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{2022 - Present}}
+            \textbf{3D-Printed Prosthetic Chicken Legs}(\href{https://example.com}{probably no link but I could?})
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Designed custom 3D printable prosthetic legs for rescued chickens at animal sanctuaries in Toronto, Florida, and Michigan
+                \item I worked with people on a cool project and I'm da bomb but idk how to put that on my resume
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{NOT Ongoing}}
+            \textbf{JeopardyPi: Raspberry Pi Trivia System}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed fully functional, Python-based Jeopardy game to run on Raspberry Pi including PCB design for buzzers and support for a game host 
+            \end{highlights}
+        \end{onecolentry}
+
+        \begin{twocolentry}{\textit{NOT Ongoing}}
+            \textbf{Church Website}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed a website for my church for better coordination (idek what to write. Should this even go here???)
+            \end{highlights}
+        \end{onecolentry}
+
+
+    \section{Experience}
+        \begin{twocolentry}{\textit{Laurel, MD} \\ \textit{June 2024 – Present}}
+            \textbf{Wireless Communications Engineer (Active TS Clearance)} \\
+            \textit{Johns Hopkins University Applied Physics Laboratory}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Research and development in advanced wireless communications systems
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{Auburn, AL} \\ \textit{October 2023 – April 2024}}
+            \textbf{Undergraduate AI Researcher} \\
+            \textit{Open-Ended Reasoning and Knowledge Acquisition Lab}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Implemented MFCC techniques for speech recognition on EPIC-KITCHENS-100 dataset to improve multi-modal video understanding
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{Auburn, AL} \\ \textit{Feb 2023 – May 2024}}
+            \textbf{Student Employee} \\
+            \textit{Alabama Micro/Nano Fabrication Lab}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Assisted PhD students with chemical processes for microelectronics fabrication
+                \item Designed and manufactured custom aluminum parts using Fusion 360 and Haas CNC
+                \item Maintained Python code to automate chemical inventory tracking
+                \item Cleaned, organized, and maintained cleanrooms, chemical labs, and specialized equipment
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{Auburn, AL} \\ \textit{Oct 2019 – May 2024}}
+            \textbf{Student Employee} \\
+            \textit{Auburn University ECE Department}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Supported students and faculty with senior design projects
+                \item Organized, cleaned, and maintained electronics and equipment
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{Auburn, AL} \\ \textit{Spring 2022 \& Fall 2022}}
+            \textbf{Process Engineering Co-Op} \\
+            \textit{SiO2 Medical Products}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Operated, validated, and debugged manufacturing machinery
+                \item Collaborated with cross-functional teams to ensure quality and documentation
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{Huntsville, AL} \\ \textit{Jan – May 2021}}
+            \textbf{Computer Engineering Co-Op} \\
+            \textit{Technology Service Corporation}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed Python scripts to streamline product testing
+                \item Tested and validated system performance
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{\textit{Auburn, AL} \\ \textit{Jan – May 2020}}
+            \textbf{Honors Calculus II Tutor} \\
+            \textit{Auburn University}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Tutored students individually to help further their understanding of topics covered in Honors Calculus II
+            \end{highlights}
+        \end{onecolentry}
+
+        
+    \section{Education}
+        \begin{twocolentry}{
+        \textit{August 2024 – Present}}
+            \textbf{Johns Hopkins University}
+            \newline
+            \textit{MS in Electrical and Computer Engineering}
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 4.0/4.0 %(\href{https://example.com}{a link to somewhere})
+                \item \textbf{Coursework:} Algorithms, Digital Signal Processing, \LaTeX
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.2 cm}
+        \begin{twocolentry}{
+        \textit{August 2019 – May 2024}}
+            \textbf{Auburn University}
+            \newline
+            \textit{BS in Electrical Engineering (Summa Cum Laude)} \\
+            \textit{BS in Computer Engineering (Summa Cum Laude)}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 4.0/4.0 %(\href{https://example.com}{a link to somewhere})
+                \item \textbf{Coursework:} Computer Architecture, Electromagnetism, Algorithms, Random Signals and Systems, Digital Electronics, Analog Electronics, Control Systems, Electrical Power Engineering, Discrete Structures
+            \end{highlights}
+        \end{onecolentry}
+
+
+    \section{Skills}
+        \begin{onecolentry}
+            \textbf{Languages:} Python, C, C++, Java, Verilog, Matlab \\
+            \textbf{Tools:} Git/GitHub, LTspice, Fusion 360, Haas CNC \\
+            \textbf{Hardware:} Arduino, Raspberry Pi, PCB design, 3D printing
+            \textbf{I should probably say something project management-y here}
+        \end{onecolentry}
+
+    \section{Activities \& Awards}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item This whole section should probably just be scrapped?
+                \item Song Director at Mt. Vernon Baptist Church
+                \item \textbf{Awards:} 
+                \begin{highlights}
+                    \item Auburn University Computer Engineering Student of the Year
+                    \item Auburn University 2023-2024 Electrical and Computer Engineering Academic Achievement Award
+                    \item ECE Capstone Showcase Outstanding Project Award (DNAM)
+                \end{highlights}
+            \end{highlights}
+        \end{onecolentry}
+
+\end{document}
